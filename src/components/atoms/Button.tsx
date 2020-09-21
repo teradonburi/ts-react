@@ -12,8 +12,8 @@ const buttonStyles: CSSProperties = {
 const Button = (props: {
   name?: string
   value: string
-  onClick: () => void
   style?: CSSProperties
+  onClick: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
 }): JSX.Element => (
   <input
     type="button"
