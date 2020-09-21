@@ -6,7 +6,7 @@ const TextButton = ({
   label = '送信',
   onClick,
 }: {
-  label: string
+  label?: string
   onClick: (text: string) => void
 }): JSX.Element => {
   const [text, setText] = React.useState('')

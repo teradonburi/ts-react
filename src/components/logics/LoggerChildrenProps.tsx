@@ -1,12 +1,13 @@
 import React from 'react'
 
+type InjectProps = { log: string }
+
 function LoggerChildrenProps({
   log,
   children,
-}: {
-  log: string
-  children: React.ReactNode[]
-}): (string | React.ReactElement)[] | null | undefined {
+}: InjectProps & {
+  children: React.ReactChild | React.ReactChild[]
+}): JSX.Element {
   // ロジックをねじ込む
   React.useEffect(() => {
     console.log(`${log} mount`)
@@ -14,7 +15,7 @@ function LoggerChildrenProps({
     return () => console.log(`${log} unmount`)
   }, [])
 
-  // childrenだと文字列や複数の子も許容してしまうので基本的にそういう想定ではあまり使わないが、一応対応しておく
+  // childrenだと文字列や複数の子も許容してしまうため対応する
   const childrenWithProps = React.Children.map(children, (child) => {
     switch (typeof child) {
       case 'string':
@@ -26,7 +27,7 @@ function LoggerChildrenProps({
     }
   })
 
-  return childrenWithProps
+  return <>{childrenWithProps}</>
 }
 
 export default LoggerChildrenProps

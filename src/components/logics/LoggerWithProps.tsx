@@ -1,14 +1,14 @@
 import React from 'react'
 
-function LoggerWithProps<T>({
+type InjectProps = { log: string }
+
+function LoggerWithProps({
   log,
   component,
-  props,
 }: {
   log: string
-  component: React.ComponentType<T>
-  props: T
-}): React.ReactElement<T> {
+  component: React.ComponentType<InjectProps>
+}): React.ReactElement {
   // ロジックをねじ込む
   React.useEffect(() => {
     console.log(`${log} mount`)
@@ -17,7 +17,7 @@ function LoggerWithProps<T>({
   }, [])
 
   const Component = component
-  return <Component log={log} {...props} />
+  return <Component log={log} />
 }
 
 export default LoggerWithProps
