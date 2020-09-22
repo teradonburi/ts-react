@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 
 const buttonStyles: CSSProperties = {
-  fontSize: 18,
+  fontSize: 16,
   fontWeight: 'bold',
   background: 'green',
   color: 'white',
