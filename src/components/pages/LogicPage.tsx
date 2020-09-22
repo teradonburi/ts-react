@@ -1,4 +1,5 @@
 import React from 'react'
+import withLogger from '../logics/LoggerHOC'
 import LoggerChildrenProps from '../logics/LoggerChildrenProps'
 import LoggerWithProps from '../logics/LoggerWithProps'
 import TextButton from '../moleculars/TextButton'
@@ -12,9 +13,13 @@ const LogTextButton = ({ log }: { log?: string }) => (
   />
 )
 
+const WrapTextButton = withLogger(LogTextButton)
+
 const LogicPage = (): JSX.Element => {
   return (
     <div>
+      <h1>HOC</h1>
+      <WrapTextButton log="high order components" />
       <h1>childrenのpropsの拡張</h1>
       <LoggerChildrenProps log="with children props">
         <LogTextButton />
