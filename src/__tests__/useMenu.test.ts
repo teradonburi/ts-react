@@ -1,20 +1,20 @@
 import { act, renderHook } from '@testing-library/react-hooks'
-import { useMenuOpen } from '../hooks/useMenu'
+import { useMenu, TAB_TYPES } from '../hooks/useMenu'
 
-it('should toggle', () => {
-  const { result } = renderHook(() => useMenuOpen())
-  // 初期状態
-  expect(result.current.isOpen).toBe(false)
+it('tab toggle', () => {
+  const { result } = renderHook(() => useMenu())
+  // 初期状態(Homeタブ)
+  expect(result.current.tabType).toBe(TAB_TYPES.HOME)
 
-  // 開閉する
+  // Aboutタブに切り替え
   act(() => {
-    result.current.toggle()
+    result.current.changeTab(TAB_TYPES.ABOUT)
   })
-  expect(result.current.isOpen).toBe(true)
+  expect(result.current.tabType).toBe(TAB_TYPES.ABOUT)
 
-  // もう一度開閉する
+  // Othersタブに切り替え
   act(() => {
-    result.current.toggle()
+    result.current.changeTab(TAB_TYPES.OTHERS)
   })
-  expect(result.current.isOpen).toBe(false)
+  expect(result.current.tabType).toBe(TAB_TYPES.OTHERS)
 })

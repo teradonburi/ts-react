@@ -1,27 +1,5 @@
 import React, { useContext } from 'react'
-
-type ValueOf<T> = T[keyof T]
-
-const TAB_TYPES = {
-  HOME: 'home',
-  ABOUT: 'about',
-  OTHERS: 'others',
-}
-
-const tabData = [
-  {
-    text: 'Home',
-    type: TAB_TYPES.HOME,
-  },
-  {
-    text: 'About',
-    type: TAB_TYPES.ABOUT,
-  },
-  {
-    text: 'Others',
-    type: TAB_TYPES.OTHERS,
-  },
-]
+import { ValueOf, TAB_TYPES, tabData, useMenu } from '../../hooks/useMenu'
 
 const TabContext = React.createContext<{
   tabType: ValueOf<typeof TAB_TYPES>
@@ -32,16 +10,7 @@ const TabContext = React.createContext<{
 })
 
 function Menu({ children }: { children: React.ReactNode }): JSX.Element {
-  const [tabType, setTabType] = React.useState<ValueOf<typeof TAB_TYPES>>(
-    TAB_TYPES.HOME
-  )
-
-  const changeTab = React.useCallback(
-    (tabType: ValueOf<typeof TAB_TYPES>) => {
-      setTabType(tabType)
-    },
-    [tabType]
-  )
+  const { tabType, changeTab } = useMenu()
 
   return (
     <TabContext.Provider

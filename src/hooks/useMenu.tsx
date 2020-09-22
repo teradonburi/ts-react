@@ -1,11 +1,42 @@
-import { useState } from 'react'
+import React from 'react'
 
-export const useMenuOpen = (): {
-  isOpen: boolean
-  setIsOpen: (value: boolean) => void
-  toggle: () => void
+export type ValueOf<T> = T[keyof T]
+
+export const TAB_TYPES = {
+  HOME: 'home',
+  ABOUT: 'about',
+  OTHERS: 'others',
+}
+
+export const tabData = [
+  {
+    text: 'Home',
+    type: TAB_TYPES.HOME,
+  },
+  {
+    text: 'About',
+    type: TAB_TYPES.ABOUT,
+  },
+  {
+    text: 'Others',
+    type: TAB_TYPES.OTHERS,
+  },
+]
+
+export const useMenu = (): {
+  tabType: ValueOf<typeof TAB_TYPES>
+  changeTab: (tabType: ValueOf<typeof TAB_TYPES>) => void
 } => {
-  const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => setIsOpen(!isOpen)
-  return { isOpen, setIsOpen, toggle }
+  const [tabType, setTabType] = React.useState<ValueOf<typeof TAB_TYPES>>(
+    TAB_TYPES.HOME
+  )
+
+  const changeTab = React.useCallback(
+    (tabType: ValueOf<typeof TAB_TYPES>) => {
+      setTabType(tabType)
+    },
+    [tabType]
+  )
+
+  return { tabType, changeTab }
 }
