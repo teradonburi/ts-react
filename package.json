@@ -4,12 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/react-hooks": "^3.4.1",
+    "@types/jest": "^26.0.14",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "babel-jest": "^26.3.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^7.9.0",
@@ -17,18 +21,40 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "husky": "^4.3.0",
+    "jest": "^26.4.2",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
+    "react-test-renderer": "^16.13.1",
     "redux": "^4.0.5",
+    "ts-jest": "^26.4.0",
     "typescript": "^4.0.2"
   },
   "scripts": {
     "start": "parcel src/index.html",
-    "lint": "eslint src/ --ext .tsx"
+    "lint": "eslint src/ --ext .tsx",
+    "test": "jest"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/__tests__/**/*.test.ts"
+    ]
   },
   "husky": {
     "hooks": {
