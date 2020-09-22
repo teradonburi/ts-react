@@ -48,7 +48,7 @@
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token 13rlh9d8f2d"
+    "chromatic": "npx chromatic --project-token"
   },
   "jest": {
     "moduleFileExtensions": [

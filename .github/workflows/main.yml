@@ -25,4 +25,4 @@ jobs:
       - name: run
         run: |
           yarn 
-          yarn chromatic
+          yarn chromatic ${{ secrets.CHROMATIC_TOKEN }}
