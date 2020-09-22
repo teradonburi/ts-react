@@ -4,6 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@storybook/addon-actions": "^6.0.21",
+    "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-links": "^6.0.21",
+    "@storybook/cli": "^6.0.21",
+    "@storybook/react": "^6.0.21",
     "@testing-library/react": "^11.0.4",
     "@testing-library/react-hooks": "^3.4.1",
     "@types/jest": "^26.0.14",
@@ -14,6 +20,7 @@
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "babel-jest": "^26.3.0",
+    "babel-loader": "^8.1.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^7.9.0",
@@ -26,6 +33,7 @@
     "prettier": "^2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-test-renderer": "^16.13.1",
@@ -36,7 +44,9 @@
   "scripts": {
     "start": "parcel src/index.html",
     "lint": "eslint src/ --ext .tsx",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -60,5 +70,6 @@
     "hooks": {
       "pre-commit": "yarn lint"
     }
-  }
+  },
+  "dependencies": {}
 }

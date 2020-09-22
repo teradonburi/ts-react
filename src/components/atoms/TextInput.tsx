@@ -5,12 +5,14 @@ const textInputStyles: CSSProperties = {
   fontWeight: 'bold',
 }
 
-const TextInput = (props: {
+export type TextInputProps = {
   name?: string
   value?: string
   style?: CSSProperties
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-}): JSX.Element => (
+}
+
+const TextInput = (props: TextInputProps): JSX.Element => (
   <input
     type="text"
     name={props.name}

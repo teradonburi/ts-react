@@ -9,12 +9,14 @@ const buttonStyles: CSSProperties = {
   boxShadow: '2px 2px 4px',
 }
 
-const Button = (props: {
+export type ButtonProps = {
   name?: string
   value: string
   style?: CSSProperties
   onClick: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
-}): JSX.Element => (
+}
+
+const Button = (props: ButtonProps): JSX.Element => (
   <input
     type="button"
     name={props.name}

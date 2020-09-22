@@ -2,13 +2,15 @@ import React from 'react'
 import TextInput from '../atoms/TextInput'
 import Button from '../atoms/Button'
 
+export type TextButtonProps = {
+  label?: string
+  onClick: (text: string) => void
+}
+
 const TextButton = ({
   label = '送信',
   onClick,
-}: {
-  label?: string
-  onClick: (text: string) => void
-}): JSX.Element => {
+}: TextButtonProps): JSX.Element => {
   const [text, setText] = React.useState('')
 
   return (
